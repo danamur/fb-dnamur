@@ -50,12 +50,16 @@ public class ApiServiceImpl implements ApiService {
 
 	@Override
 	public UserDTO updateUser(UserDTO user) {
-		return null;
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.put(URL_USER + user.getId(), user);
+		return user;
 	}
 
 	@Override
 	public Boolean deleteUser(int id) {
-		return null;
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.delete(URL_USER + id);
+		return true;
 	}
 
 }
