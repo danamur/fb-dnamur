@@ -42,7 +42,10 @@ public class ApiServiceImpl implements ApiService {
 
 	@Override
 	public UserDTO createUser(UserDTO user) {
-		return null;
+		
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.postForObject(URL_USER, user, UserDTO.class);
+		return user;
 	}
 
 	@Override
