@@ -3,10 +3,11 @@ package com.cleverit.java.danielnamur.services;
 import java.util.List;
 
 import com.cleverit.java.danielnamur.dto.UserDTO;
+import com.cleverit.java.danielnamur.models.LicensePlate;
 
 public interface ApiService {
 
-	public Boolean fetchDataLicensePlate() throws Exception;
+	public List<LicensePlate> getDataLicensePlate();
 	
 	public UserDTO getUserById(String id);
 	

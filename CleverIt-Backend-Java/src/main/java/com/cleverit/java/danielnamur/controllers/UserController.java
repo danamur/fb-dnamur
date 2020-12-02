@@ -44,7 +44,7 @@ public class UserController {
 		return response;
 	}
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public @ResponseBody UserResponse getAllUsers() {
 		UserResponse userResponse = new UserResponse();
 		try {
@@ -57,7 +57,7 @@ public class UserController {
 		return userResponse;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping("/")
 	public UserDTO createUser(@ModelAttribute UserDTO user) {
 		UserDTO userResponse = null;
 		try {
@@ -89,4 +89,5 @@ public class UserController {
 		}
 		return userResponse;
 	}
+	
 }

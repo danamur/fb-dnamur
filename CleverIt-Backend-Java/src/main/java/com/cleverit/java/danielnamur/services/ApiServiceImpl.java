@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.cleverit.java.danielnamur.dto.UserDTO;
+import com.cleverit.java.danielnamur.models.LicensePlate;
 import com.cleverit.java.danielnamur.repositories.LicensePlateRepository;
 
 @Service
@@ -19,10 +20,13 @@ public class ApiServiceImpl implements ApiService {
 	LicensePlateRepository licensePlateRepository;
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public Boolean fetchDataLicensePlate() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<LicensePlate> getDataLicensePlate() {
+		RestTemplate restTemplate = new RestTemplate();
+		Object license = restTemplate.getForObject(URL_LICENSE_PLATE, Object.class);
+		return (List<LicensePlate>) license;	
+		
 	}
 
 	@Override
