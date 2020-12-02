@@ -32,9 +32,12 @@ public class ApiServiceImpl implements ApiService {
 		return user;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserDTO> getAllUsers() {
-		return null;
+		RestTemplate restTemplate = new RestTemplate();
+		Object user = restTemplate.getForObject(URL_USER, Object.class);
+		return (List<UserDTO>) user;
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.cleverit.java.danielnamur.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,14 +11,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cleverit.java.danielnamur.dto.UserDTO;
+import com.cleverit.java.danielnamur.dto.UserResponse;
 import com.cleverit.java.danielnamur.services.ApiService;
 
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/user")
 @CrossOrigin(origins = "*")
-@Slf4j
 public class UserController {
 	
 	@Autowired
@@ -37,4 +38,17 @@ public class UserController {
 		
 		return response;
 	}
+	
+	@GetMapping("/all")
+	public @ResponseBody UserResponse getAllUsers() {
+		UserResponse userResponse = new UserResponse();
+		try {
+			List<UserDTO> userList = apiService.getAllUsers();
+			userResponse.setUserList(userList);
+		} catch(Exception e) {
+			System.out.println("[UserController][getAllUsers] Error en el Metodo");
+		}
+		
+		return userResponse;
+	} 
 }
