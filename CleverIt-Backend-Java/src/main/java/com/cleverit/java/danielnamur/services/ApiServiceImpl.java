@@ -26,7 +26,7 @@ public class ApiServiceImpl implements ApiService {
 	}
 
 	@Override
-	public UserDTO getUserById(int id) {
+	public UserDTO getUserById(String id) {
 		RestTemplate restTemplate = new RestTemplate();
 		UserDTO user = restTemplate.getForObject(URL_USER + id, UserDTO.class);
 		return user;
@@ -56,7 +56,7 @@ public class ApiServiceImpl implements ApiService {
 	}
 
 	@Override
-	public Boolean deleteUser(int id) {
+	public Boolean deleteUser(String id) {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.delete(URL_USER + id);
 		return true;

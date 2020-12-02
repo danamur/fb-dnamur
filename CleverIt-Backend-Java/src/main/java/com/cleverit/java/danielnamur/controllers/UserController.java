@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +31,9 @@ public class UserController {
 		this.apiService = apiService;
 	}
 	
+	
 	@GetMapping("/{id}")
-	public @ResponseBody UserDTO getUserById(@PathVariable("id") int id) {
+	public @ResponseBody UserDTO getUserById(@PathVariable("id") String id) {
 		UserDTO response = null;
 		try {
 			response = apiService.getUserById(id);
@@ -69,7 +69,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/{id}")
-	public @ResponseBody UserDTO updateUser(@PathVariable("id") int id, @ModelAttribute UserDTO user) {
+	public @ResponseBody UserDTO updateUser(@PathVariable("id") String id, @ModelAttribute UserDTO user) {
 		UserDTO userResponse = null;
 		try {
 			userResponse = apiService.updateUser(user);
@@ -80,7 +80,7 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public @ResponseBody Boolean deleteUser(@PathVariable("id") int id) {
+	public @ResponseBody Boolean deleteUser(@PathVariable("id") String id) {
 		Boolean userResponse = false;
 		try {
 			userResponse = apiService.deleteUser(id);

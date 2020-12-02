@@ -8,7 +8,7 @@ public interface ApiService {
 
 	public Boolean fetchDataLicensePlate() throws Exception;
 	
-	public UserDTO getUserById(int id);
+	public UserDTO getUserById(String id);
 	
 	public List<UserDTO> getAllUsers();
 	
@@ -16,6 +16,6 @@ public interface ApiService {
 	
 	public UserDTO updateUser(UserDTO user);
 	
-	public Boolean deleteUser(int id);
+	public Boolean deleteUser(String id);
 
 }
